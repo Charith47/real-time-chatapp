@@ -1,0 +1,142 @@
+/* Custom scrollbar */
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #cea7ce;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar
+{
+    width: 10px;
+    border-radius: 10px;
+	background-color: #dabbda;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: rgb(123, 62, 173);
+}
+
+#app-body{
+    background-color: red;
+    position: absolute;
+    width: 500px;
+    height: 760px;
+    border-radius: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(to right, rgb(26, 10, 41) , rgb(24, 17, 58));
+    box-shadow: 12px 10px 25px -8px rgba(97, 97, 97, 0.8);
+}
+
+#message-container{
+    padding: 10px;
+    width: 500px;
+    height: 600px;
+    overflow-y: scroll; 
+    transform: translateY(14%)
+}
+
+#send-container{
+    width: 500px;
+    height: 50px;
+    transform: translateY(100px);
+}
+
+#room-container{
+    position: absolute;
+    width: 500px;
+    height: 80px; 
+    transform: translateY(5px);
+}
+
+#msg-field, #msg-field:active, #msg-field:focus{ 
+    background:#242c46;
+    color: white;
+    border-radius:7px;
+    width: 445px;
+    height: 50px;
+    margin-left: 10px;
+    padding: 10px 30px 10px 10px;
+    border: none;
+    outline: none;
+    word-wrap: break-word;
+}
+
+#send-button, #send-button:active, #send-button:focus{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    transform: translate(430px,-73px);
+    border-radius: 50%;
+    background: #ea80fc;
+    border: none;
+    outline: none;
+}
+
+#room-picture{
+    background-color: #ea80fc;
+    transform: translate(10px,10px);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+
+.fa{
+    color: rgb(0, 0, 0);
+    transform: translateX(-1px);
+}
+
+.friend-message{
+    word-wrap: break-word;
+    max-width: 300px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: rgb(6, 108, 126);
+    width: fit-content;
+}
+
+.my-message{
+    word-wrap: break-word;
+    max-width: 300px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    border-radius: 5px;
+    background-color: rgb(170, 11, 109);
+    width: fit-content;
+}
+
+
+.bot-message{
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.room-info{
+    transform: translate(80px,-50px);
+}
+
+body {
+    color: rgb(218, 218, 218);
+    height: 100%;
+    background-color: #f5f3ed ;
+    background-image: linear-gradient(to right, rgb(26, 10, 41) , rgb(24, 17, 58));
+}
+
+input{
+    caret-color: rgb(255, 255, 255);
+    color: white;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "chat-ui-test",
+  "version": "1.0.0",
+  "description": "test app for advanced chat ui",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "author": "loki",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "moment": "^2.29.1",
+    "socket.io": "^3.1.0",
+    "unique-names-generator": "^4.3.1"
+  },
+  "devDependencies": {
+    "chance": "^1.1.7",
+    "crypto-js": "^4.0.0",
+    "nodemon": "^2.0.7"
+  }
+}
