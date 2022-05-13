@@ -1,0 +1,89 @@
+.main {
+	width: 600px;
+	height: 100vh;
+	margin: 0px auto;
+	display: flex;
+	align-items: center;
+}
+
+.app {
+	width: 100%;
+	height: 800px;
+	color: #e4e6eb;
+	background-color: #242526;
+	border-radius: 20px;
+}
+
+.top-bar {
+	height: 60px;
+	padding: 10px;
+	display: flex;
+}
+
+.group-image {
+	width: 60px;
+	height: 60px;
+	background-color: #444546;
+	border-radius: 50%;
+}
+
+.group-info {
+	display: flex;
+	align-items: center;
+}
+
+.messages {
+	height: 645px;
+	padding: 10px;
+	overflow-y: scroll;
+	background-color: rgb(31, 28, 28);
+}
+
+.message-bar {
+	padding: 10px;
+}
+
+.message-bar input {
+	padding: 10px;
+	background-color: #444546;
+	border: none;
+	border-radius: 20px;
+	outline: none;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: sans-serif;
+	background-color: #18191a;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+p {
+	padding: 5px 10px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #444546;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	border-radius: 10px;
+	background-color: #dabbda;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: rgb(123, 62, 173);
+}
