@@ -29,7 +29,6 @@ const groupName = sentence.charAt(0).toUpperCase() + sentence.slice(1);
 
 let count = 0;
 
-
 io.on('connection', (socket) => {
 	// log to server and increment user count
 	console.log(cyan, '[SERVER] : A user connected ');
@@ -37,8 +36,10 @@ io.on('connection', (socket) => {
 
 	// emit count, robohash, random group name to all users
 	io.emit('user-count', count);
-	io.emit('hash-code', hash.toString());
-	io.emit('group-name', groupName);
+	io.emit('group-info', {
+		hash: hash.toString(),
+		groupName: groupName,
+	});
 
 	// message handling
 	socket.on('new-user', (name) => {
