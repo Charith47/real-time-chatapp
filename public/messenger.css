@@ -11,6 +11,7 @@
 	height: 800px;
 	color: #e4e6eb;
 	background-color: #242526;
+	border: solid 1px #ffffff23;
 	border-radius: 20px;
 }
 
@@ -35,8 +36,8 @@
 .messages {
 	height: 645px;
 	padding: 10px;
+	background-color: #1b1c1d;
 	overflow-y: scroll;
-	background-color: rgb(31, 28, 28);
 }
 
 .message-bar {
@@ -44,11 +45,56 @@
 }
 
 .message-bar input {
+	width: 560px;
 	padding: 10px;
+	color: #e4e6eb;
 	background-color: #444546;
 	border: none;
 	border-radius: 20px;
 	outline: none;
+}
+
+.bubble {
+	color: white;
+	background-color: #3e4042;
+	font-family: sans-serif;
+	width: fit-content;
+	max-width: 300px;
+	overflow-wrap: anywhere;
+	padding: 10px;
+	margin: 5px 0px;
+}
+
+.bubble.left {
+	border-radius: 5px 20px 20px 5px;
+}
+
+.bubble.left:first-child {
+	border-radius: 20px 20px 20px 5px;
+}
+
+.bubble.left:last-child {
+	border-radius: 5px 20px 20px 20px;
+}
+
+.bubble.left:only-child {
+	border-radius: 20px;
+}
+
+.bubble.right {
+	margin-left: auto;
+	background-color: #005ed0;
+	border-radius: 20px 5px 5px 20px;
+}
+
+.bubble.right:first-child {
+	border-radius: 20px 20px 5px 20px;
+}
+.bubble.right:last-child {
+	border-radius: 20px 5px 20px 20px;
+}
+.bubble.right:only-child {
+	border-radius: 20px;
 }
 
 * {
