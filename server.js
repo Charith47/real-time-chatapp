@@ -1,4 +1,3 @@
-// colors
 const cyan = '\x1b[36m%s\x1b[0m';
 const yellow = '\x1b[33m%s\x1b[0m';
 
@@ -9,12 +8,8 @@ const {
 	animals,
 } = require('unique-names-generator');
 
-// server ---------------------------
 const server = require('http').createServer();
-
-const { emit } = require('nodemon');
 const crypto = require('crypto-js');
-const { timers } = require('jquery');
 const io = require('socket.io')(server, {
 	cors: {
 		origin: '*',
@@ -24,18 +19,16 @@ const io = require('socket.io')(server, {
 });
 
 const users = {};
-// ----------------------------------
 
-//misc ------------------------------
-var hash = crypto.lib.WordArray.random(16).toString();
+const hash = crypto.lib.WordArray.random(16).toString();
 const randomName = uniqueNamesGenerator({
 	dictionaries: [adjectives, colors, animals],
-}); // big_red_donkey
-var sentence = randomName.split('_').join(' ');
-var groupName = sentence.charAt(0).toUpperCase() + sentence.slice(1);
+});
+const sentence = randomName.split('_').join(' ');
+const groupName = sentence.charAt(0).toUpperCase() + sentence.slice(1);
 
-var count = 0;
-// ----------------------------------
+let count = 0;
+
 
 io.on('connection', (socket) => {
 	// log to server and increment user count
