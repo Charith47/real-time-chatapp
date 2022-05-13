@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Messenger</title>
     <link rel="stylesheet" href="messenger.css">
+    <script defer src="http://localhost:3000/socket.io/socket.io.min.js"></script>
+    <script defer src="messenger.js"></script>
 </head>
 
 <body>
@@ -19,9 +21,9 @@
                     </div>
                 </div>
             </div>
-            <div class="messages">
+            <div class="messages" id="messages">
                 <!--dynamically generated content-->
-                <div class="recieve">
+                <div class="context recieve">
                     <div class="bubble left">
                         Hi!!
                     </div>
@@ -29,7 +31,7 @@
                         My name is Charith
                     </div>
                 </div>
-                <div class="send">
+                <div class="context send">
                     <div class="bubble right">
                         Hello there
                     </div>
