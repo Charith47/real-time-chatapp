@@ -4,6 +4,7 @@ const socket = io('http://localhost:3000');
 const init = () => {
 	const name = prompt('What is your name?');
 	socket.emit('new-user', name);
+	// set a cookie to username
 };
 
 init();
@@ -30,21 +31,35 @@ socket.on('chat-message', (data) => {
 	const contexts = document
 		.getElementById('messages')
 		.getElementsByClassName('context');
-	let context = contexts[contexts.length - 1];
-	let contextName = context.className.split(' ')[1];
+
+	const context = contexts[contexts.length - 1];
+	const [type, contextName, contextId] = context
+		? context.className.split(' ')
+		: [];
 
 	const message = document.createElement('div');
 	message.className = 'bubble left';
 	message.innerHTML = data.message;
 
-	if (contextName === 'recieve') {
+	if (contextName === 'recieve' && contextId === data.id) {
 		context.appendChild(message);
 	} else {
+		const contextWrapper = document.createElement('div');
+		contextWrapper.className = 'wrapper';
+
 		const newContext = document.createElement('div');
-		newContext.className = 'context recieve';
+		newContext.className = `context recieve ${data.id}`;
+
+		const name = document.createElement('span');
+		name.id = `${data.name} ${data.id}`;
+		name.className = 'user-name';
+		name.innerHTML = data.name;
 
 		newContext.appendChild(message);
-		messages.appendChild(newContext);
+
+		contextWrapper.appendChild(name);
+		contextWrapper.appendChild(newContext);
+
+		messages.appendChild(contextWrapper);
 	}
-	// appendMessage(`${data.name}`, `${data.message}`);
 });
