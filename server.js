@@ -50,6 +50,7 @@ io.on('connection', (socket) => {
 		socket.broadcast.emit('chat-message', {
 			message: message,
 			name: users[socket.id],
+			id: socket.id
 		});
 	});
 	socket.on('disconnect', () => {
