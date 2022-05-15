@@ -1,13 +1,25 @@
 let context = null;
 const socket = io('http://localhost:3000');
 
-const init = () => {
-	const name = prompt('What is your name?');
-	socket.emit('new-user', name);
-	// set a cookie to username
+// helper functions
+const getContext = () => {
+	const contexts = document
+		.getElementById('messages')
+		.getElementsByClassName('context');
+
+	const context = contexts[contexts.length - 1];
+	return context ? [context, ...context.className.split(' ')] : [];
 };
 
-init();
+const createContext = (type, id) => {
+	const contextWrapper = document.createElement('div');
+	contextWrapper.className = 'wrapper';
+
+	const newContext = document.createElement('div');
+	newContext.className = id ? `context ${type} ${id}` : `context ${type}`;
+
+	return [contextWrapper, newContext];
+};
 
 socket.on('group-info', (info) => {
 	let tag = document.createElement('style');
@@ -28,14 +40,7 @@ socket.on('user-count', (count) => {
 socket.on('chat-message', (data) => {
 	const messages = document.getElementById('messages');
 
-	const contexts = document
-		.getElementById('messages')
-		.getElementsByClassName('context');
-
-	const context = contexts[contexts.length - 1];
-	const [type, contextName, contextId] = context
-		? context.className.split(' ')
-		: [];
+	const [context, contextType, contextName, contextId] = getContext();
 
 	const message = document.createElement('div');
 	message.className = 'bubble left';
@@ -44,11 +49,7 @@ socket.on('chat-message', (data) => {
 	if (contextName === 'recieve' && contextId === data.id) {
 		context.appendChild(message);
 	} else {
-		const contextWrapper = document.createElement('div');
-		contextWrapper.className = 'wrapper';
-
-		const newContext = document.createElement('div');
-		newContext.className = `context recieve ${data.id}`;
+		const [contextWrapper, newContext] = createContext('recieve', data.id);
 
 		const name = document.createElement('span');
 		name.id = `${data.name} ${data.id}`;
@@ -63,3 +64,50 @@ socket.on('chat-message', (data) => {
 		messages.appendChild(contextWrapper);
 	}
 });
+
+socket.on('user-connected', () => {
+	//TODO:
+});
+
+const onSendMessage = (e) => {
+	e.preventDefault();
+	const messages = document.getElementById('messages');
+
+	const input = document.getElementById('message-input');
+	const messageText = input.value;
+
+	if (messageText.trim() != '') {
+		socket.emit('send-chat-message', messageText);
+
+		const message = document.createElement('div');
+		message.className = 'bubble right';
+		message.innerHTML = messageText;
+
+		const [context, contextType, contextName, contextId] = getContext();
+
+		if (contextName === 'send') {
+			context.appendChild(message);
+		} else {
+			const [contextWrapper, newContext] = createContext('send', '');
+
+			newContext.appendChild(message);
+			contextWrapper.appendChild(newContext);
+
+			messages.appendChild(contextWrapper);
+		}
+
+		input.value = '';
+	}
+};
+
+const init = () => {
+	document
+		.getElementById('send-message')
+		.addEventListener('submit', onSendMessage);
+
+	const name = prompt('What is your name?');
+	socket.emit('new-user', name);
+	// set a cookie to username
+};
+
+init();

@@ -54,6 +54,15 @@
 	outline: none;
 }
 
+.user-name{
+	color: #7c7e7f;
+	font-size: 12px;
+}
+
+.wrapper{
+	margin: 10px 0px;
+}
+
 .bubble {
 	color: white;
 	background-color: #3e4042;
@@ -126,10 +135,10 @@ p {
 ::-webkit-scrollbar {
 	width: 10px;
 	border-radius: 10px;
-	background-color: #dabbda;
+	background-color: #7c7e7f;
 }
 
 ::-webkit-scrollbar-thumb {
 	border-radius: 10px;
-	background-color: rgb(123, 62, 173);
+	background-color: #7c7e7f;
 }
